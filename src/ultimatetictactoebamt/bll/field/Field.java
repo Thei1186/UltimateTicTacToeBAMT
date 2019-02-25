@@ -5,6 +5,7 @@
  */
 package ultimatetictactoebamt.bll.field;
 
+import java.util.ArrayList;
 import java.util.List;
 import ultimatetictactoebamt.bll.move.IMove;
 
@@ -14,7 +15,16 @@ import ultimatetictactoebamt.bll.move.IMove;
  */
 public class Field implements IField
 {
+    private String[][] macroBoard;
+    private String[][] microBoard;
 
+    public Field()
+    {
+        macroBoard = new String[3][3];
+        microBoard = new String[9][9];
+    }
+    
+    
     @Override
     public void clearBoard()
     {
@@ -54,13 +64,13 @@ public class Field implements IField
     @Override
     public String[][] getBoard()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return microBoard;
     }
 
     @Override
     public String[][] getMacroboard()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return macroBoard;
     }
 
     @Override
