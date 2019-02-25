@@ -13,7 +13,16 @@ import ultimatetictactoebamt.bll.field.IField;
  */
 public class GameState implements IGameState
 {
-
+    private int moveNumber;
+    private int roundNumber;
+    
+    public GameState()
+    {
+        moveNumber = 1;
+        roundNumber = 1;
+    }
+    
+    
     @Override
     public IField getField()
     {
@@ -23,25 +32,25 @@ public class GameState implements IGameState
     @Override
     public int getMoveNumber()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return moveNumber;
     }
 
     @Override
     public void setMoveNumber(int moveNumber)
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.moveNumber = moveNumber;
     }
 
     @Override
     public int getRoundNumber()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return roundNumber;
     }
 
     @Override
     public void setRoundNumber(int roundNumber)
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.roundNumber = roundNumber;
     }
     
 }
