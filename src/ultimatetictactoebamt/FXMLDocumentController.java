@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
 
 /**
  *
@@ -18,13 +19,31 @@ import javafx.scene.control.Label;
  */
 public class FXMLDocumentController implements Initializable
 {
-    
-    private Label label;
+
+    @FXML
+    private GridPane macroGridPane;
+    @FXML
+    private GridPane microGridPane1;
+    @FXML
+    private GridPane microGridPane2;
+    @FXML
+    private GridPane microGridPane3;
+    @FXML
+    private GridPane microGridPane4;
+    @FXML
+    private GridPane microGridPane5;
+    @FXML
+    private GridPane microGridPane6;
+    @FXML
+    private GridPane microGridPane7;
+    @FXML
+    private GridPane microGridPane8;
+    @FXML
+    private GridPane microGridPane9;
     
     private void handleButtonAction(ActionEvent event)
     {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
+        
     }
     
     @Override
