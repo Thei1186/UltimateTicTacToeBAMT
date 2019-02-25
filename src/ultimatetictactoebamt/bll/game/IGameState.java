@@ -1,6 +1,6 @@
-package game;
+package ultimatetictactoebamt.bll.game;
 
-import field.IField;
+import ultimatetictactoebamt.bll.field.IField;
 
 /**
  *
