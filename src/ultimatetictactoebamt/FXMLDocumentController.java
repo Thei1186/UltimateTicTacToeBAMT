@@ -23,23 +23,10 @@ public class FXMLDocumentController implements Initializable
     @FXML
     private GridPane macroGridPane;
     @FXML
-    private GridPane microGridPane1;
+    private GridPane microGridPane1, microGridPane2, microGridPane3, microGridPane4, microGridPane5;
     @FXML
-    private GridPane microGridPane2;
-    @FXML
-    private GridPane microGridPane3;
-    @FXML
-    private GridPane microGridPane4;
-    @FXML
-    private GridPane microGridPane5;
-    @FXML
-    private GridPane microGridPane6;
-    @FXML
-    private GridPane microGridPane7;
-    @FXML
-    private GridPane microGridPane8;
-    @FXML
-    private GridPane microGridPane9;
+    private GridPane microGridPane6, microGridPane7, microGridPane8, microGridPane9;
+    
     
     private void handleButtonAction(ActionEvent event)
     {
