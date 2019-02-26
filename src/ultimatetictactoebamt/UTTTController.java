@@ -39,5 +39,10 @@ public class UTTTController implements Initializable
     {
         // TODO
     }    
+
+    @FXML
+    private void clearGame(ActionEvent event)
+    {
+    }
     
 }

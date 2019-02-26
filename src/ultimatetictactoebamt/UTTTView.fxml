@@ -304,7 +304,7 @@
             <Label layoutX="488.0" layoutY="68.0" style="-fx-text-fill: white;" text="moves:" />
             <Label layoutX="551.0" layoutY="68.0" style="-fx-text-fill: white;" text="Label" />
             <ComboBox layoutY="1.0" prefWidth="150.0" promptText="Game mode" style="-fx-background-color: darkGray;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-            <Button layoutX="653.0" mnemonicParsing="false" style="-fx-background-color: darkGray;" text="New game" />
+            <Button layoutX="653.0" mnemonicParsing="false" onAction="#clearGame" style="-fx-background-color: darkGray;" text="New game" />
          </children>
       </AnchorPane>
    </children>
