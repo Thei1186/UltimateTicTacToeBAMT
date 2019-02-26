@@ -16,7 +16,8 @@ public class Field implements IField
 {
     private String[][] macroBoard;
     private String[][] microBoard;
-
+    private List<IMove> listMoves;
+    
     public Field()
     {
         macroBoard = new String[3][3];
@@ -34,7 +35,7 @@ public class Field implements IField
     @Override
     public List<IMove> getAvailableMoves()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return listMoves;
     }
 
     @Override
