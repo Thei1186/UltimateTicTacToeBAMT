@@ -5,6 +5,7 @@
  */
 package ultimatetictactoebamt.bll.game;
 
+import ultimatetictactoebamt.bll.field.Field;
 import ultimatetictactoebamt.bll.field.IField;
 
 /**
@@ -15,9 +16,11 @@ public class GameState implements IGameState
 {
     private int moveNumber;
     private int roundNumber;
+    private IField field;
     
     public GameState()
     {
+        field = new Field();
         moveNumber = 1;
         roundNumber = 1;
     }
@@ -26,7 +29,7 @@ public class GameState implements IGameState
     @Override
     public IField getField()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       return field;
     }
 
     @Override
