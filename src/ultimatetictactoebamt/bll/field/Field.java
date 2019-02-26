@@ -5,6 +5,7 @@
  */
 package ultimatetictactoebamt.bll.field;
 
+import java.util.ArrayList;
 import java.util.List;
 import ultimatetictactoebamt.bll.move.IMove;
 
@@ -16,7 +17,6 @@ public class Field implements IField
 {
     private String[][] macroBoard;
     private String[][] microBoard;
-    private List<IMove> listMoves;
     
     public Field()
     {
@@ -35,25 +35,54 @@ public class Field implements IField
     @Override
     public List<IMove> getAvailableMoves()
     {
+        List<IMove> listMoves = new ArrayList<>();
+        for (int i = 0; i < microBoard.length; i++)
+        {
+            for (int j = 0; j < microBoard[i].length; j++)
+            {
+                //TODO isInActiveMicroboard needs to work before this part can
+                //be written since we need to check whether a move is "legal"
+            }
+        }
         return listMoves;
     }
 
     @Override
     public String getPlayerId(int column, int row)
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return microBoard[column][row];
     }
 
     @Override
     public boolean isEmpty()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for (int i = 0; i < 9; i++)
+        {
+            for (int j = 0; j < 9; j++)
+            {
+                if (microBoard[i][j] != AVAILABLE_FIELD && microBoard[i][j] != EMPTY_FIELD)
+                {
+                    return false;
+                }
+            }
+        }
+            return true;
     }
 
     @Override
     public boolean isFull()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for (int i = 0; i < 9; i++)
+        {
+            for (int j = 0; j < 9; j++)
+            {
+                if (microBoard[i][j] == AVAILABLE_FIELD || microBoard[i][j] == EMPTY_FIELD)
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     @Override
