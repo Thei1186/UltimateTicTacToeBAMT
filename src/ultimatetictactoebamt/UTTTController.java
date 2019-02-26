@@ -17,7 +17,7 @@ import javafx.scene.layout.GridPane;
  *
  * @author Theis
  */
-public class FXMLDocumentController implements Initializable
+public class UTTTController implements Initializable
 {
 
     @FXML
