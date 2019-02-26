@@ -28,7 +28,21 @@ public class Field implements IField
     @Override
     public void clearBoard()
     {
-       macroBoard = new String[3][3];
+        for (int i = 0; i < 9; i++)
+        {
+            for (int j = 0; j < 9; j++)
+            {
+                microBoard[i][j] = AVAILABLE_FIELD;
+            }
+        }
+        
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                macroBoard[i][j] = EMPTY_FIELD; 
+            }
+        }
        microBoard = new String[9][9];
     }
 
