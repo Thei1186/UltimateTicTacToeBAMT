@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="698.0" prefWidth="718.0" xmlns="http://javafx.com/javafx/8.0.181" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ultimatetictactoebamt.UTTTController">
+<AnchorPane id="AnchorPane" prefHeight="698.0" prefWidth="718.0" xmlns="http://javafx.com/javafx/8.0.181" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ultimatetictactoebamt.GUI.UTTTController">
    <children>
       <GridPane fx:id="macroGridPane" layoutX="59.0" layoutY="128.0" prefHeight="570.0" prefWidth="718.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="128.0">
         <columnConstraints>

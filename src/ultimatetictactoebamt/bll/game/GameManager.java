@@ -134,16 +134,31 @@ public class GameManager
 
     private Boolean verifyMoveLegality(IMove move)
     {
-        //Test if the move is legal   
-        //NOTE: should also check whether the move is placed on an occupied spot.
-        System.out.println("Checking move validity against macroboard available field");
-        System.out.println("Not currently checking move validity actual board");
-        return currentState.getField().isInActiveMicroboard(move.getX(), move.getY());
+        //Tests if the move is legal and checks whether the move is placed on an occupied spot.
+        
+        IField field = currentState.getField();
+        boolean valid = field.isInActiveMicroboard(move.getX(), move.getY());
+        
+        if (valid && (move.getX() < 0 || 9 <= move.getX()))
+        {
+            valid = false;
+        }
+        
+        if (valid && (move.getY() < 0 || 9 <= move.getY()))
+        {
+            valid = false;
+        }
+                
+        if (valid && !field.getBoard()[move.getX()][move.getY()].equals(IField.EMPTY_FIELD))
+        {
+            valid = false;
+        }
+        return valid;
     }
 
     private void updateBoard(IMove move)
     {
-        //TODO: Update the board to the new state 
+        //Updates the board to the new state 
         String[][] microBoard = currentState.getField().getBoard();
         microBoard[move.getX()][move.getY()] = currentPlayer + "";
         currentState.setMoveNumber(currentState.getMoveNumber() + 1);
@@ -158,7 +173,7 @@ public class GameManager
 
     private void updateMacroboard(IMove move)
     {
-        //TODO: Update the macroboard to the new state 
+        //Updates the macroboard to the new state 
         String[][] macroBoard = currentState.getField().getMacroboard();
         for (int i = 0; i < macroBoard.length; i++)
         {
@@ -194,6 +209,7 @@ public class GameManager
         }
     }
     
+   
     public int getCurrentPlayer()
     {
         return currentPlayer;
