@@ -8,6 +8,7 @@ package ultimatetictactoebamt.bll.field;
 import java.util.ArrayList;
 import java.util.List;
 import ultimatetictactoebamt.bll.move.IMove;
+import ultimatetictactoebamt.bll.move.Move;
 
 /**
  *
@@ -54,8 +55,10 @@ public class Field implements IField
         {
             for (int j = 0; j < microBoard[i].length; j++)
             {
-                //TODO isInActiveMicroboard needs to work before this part can
-                //be written since we need to check whether a move is "legal"
+                if (isInActiveMicroboard(i, j) && microBoard[i][j].equals(EMPTY_FIELD))
+                {
+                    listMoves.add(new Move(i, j));
+                }
             }
         }
         return listMoves;
@@ -102,7 +105,11 @@ public class Field implements IField
     @Override
     public Boolean isInActiveMicroboard(int x, int y)
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int microX = x > 0 ? x/3 : 0;
+        int microY = y > 0 ? y/3 : 0;
+        
+        String newValue = macroBoard[microX][microY];
+        return newValue.equals(AVAILABLE_FIELD);
     }
 
     @Override
