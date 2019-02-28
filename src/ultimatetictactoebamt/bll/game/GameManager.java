@@ -1,6 +1,7 @@
 package ultimatetictactoebamt.bll.game;
 
 import ultimatetictactoebamt.bll.bot.IBot;
+import ultimatetictactoebamt.bll.field.IField;
 import ultimatetictactoebamt.bll.move.IMove;
 
 /**
@@ -143,12 +144,69 @@ public class GameManager
     private void updateBoard(IMove move)
     {
         //TODO: Update the board to the new state 
-        throw new UnsupportedOperationException("Not supported yet.");
+        String[][] microBoard = currentState.getField().getBoard();
+        microBoard[move.getX()][move.getY()] = currentPlayer + "";
+        currentState.setMoveNumber(currentState.getMoveNumber() + 1);
+        
+        if (currentState.getMoveNumber() % 2 == 0)
+        {
+            currentState.setRoundNumber(currentState.getRoundNumber() + 1);
+            
+            updateMacroboard(move);
+        }
     }
 
     private void updateMacroboard(IMove move)
     {
         //TODO: Update the macroboard to the new state 
-        throw new UnsupportedOperationException("Not supported yet.");
+        String[][] macroBoard = currentState.getField().getMacroboard();
+        for (int i = 0; i < macroBoard.length; i++)
+        {
+            for (int j = 0; j < macroBoard[i].length; j++)
+            {
+                if (macroBoard[i][j].equals(IField.AVAILABLE_FIELD))
+                {
+                    macroBoard[i][j] = IField.EMPTY_FIELD;
+                }
+            }
+            
+        }
+        
+        int microX = move.getX() % 3;
+        int microY = move.getY() % 3;
+        
+        if (macroBoard[microX][microY].equals(IField.EMPTY_FIELD))
+        {
+            macroBoard[microX][microY] = IField.AVAILABLE_FIELD;
+        }
+        else
+        {
+            for (int i = 0; i < macroBoard.length; i++)
+            {
+                for (int j = 0; j < macroBoard[i].length; j++)
+                {
+                    if(macroBoard[i][j].equals(IField.EMPTY_FIELD))
+                    {
+                        macroBoard[i][j] = IField.AVAILABLE_FIELD;
+                    }
+                }
+            }
+        }
     }
+    
+    public int getCurrentPlayer()
+    {
+        return currentPlayer;
+    }
+    
+    public void setCurrentPlayer(int player)
+    {
+        currentPlayer = player;
+    }
+    
+    public IGameState getCurrentState()
+    {
+        return currentState;
+    }
+            
 }
