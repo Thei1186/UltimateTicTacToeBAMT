@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import ultimatetictactoebamt.bll.game.GameState;
 import ultimatetictactoebamt.bll.move.Move;
@@ -30,10 +31,11 @@ public class UTTTController implements Initializable
     private GridPane microGridPane1, microGridPane2, microGridPane3, microGridPane4, microGridPane5;
     @FXML
     private GridPane microGridPane6, microGridPane7, microGridPane8, microGridPane9;
-    
-    private GameModel gModel;
     @FXML
     private Label lblMoves;
+    
+    private GameModel gModel;
+    
     public UTTTController()
     {
         gModel = new GameModel();
@@ -46,13 +48,14 @@ public class UTTTController implements Initializable
         Integer col = GridPane.getColumnIndex((Node) event.getSource());
         int r = (row == null) ? 0 : row;
         int c = (col == null) ? 0 : col;
-        
+
         int player = gModel.getCurrentPlayer();
         Button btn = (Button) event.getSource();
         String xOrO = player == 0 ? "X" : "O";
         
         btn.setText(xOrO);
         gModel.doMove(new Move(r,c));
+        
     }
 
     @Override
@@ -64,6 +67,15 @@ public class UTTTController implements Initializable
     private void clearGame(ActionEvent event)
     {
     
+    }
+
+    @FXML
+    private void handleMacroBoard(MouseEvent event)
+    {
+        Integer row = GridPane.getRowIndex((Node) event.getSource());
+        Integer col = GridPane.getColumnIndex((Node) event.getSource());
+        int r = (row == null) ? 0 : row;
+        int c = (col == null) ? 0 : col;
     }
 
 }

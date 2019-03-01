@@ -89,6 +89,7 @@ public class GameManager
         //Verify the new move
         if (!verifyMoveLegality(move))
         {
+            System.out.println(verifyMoveLegality(move));
             return false;
         }
 
@@ -98,6 +99,12 @@ public class GameManager
 
         //Update currentPlayer
         currentPlayer = (currentPlayer + 1) % 2;
+        
+        System.out.println(move);
+        
+        System.out.println(currentPlayer);
+        
+        
         return true;
     }
 

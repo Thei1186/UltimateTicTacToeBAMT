@@ -34,7 +34,7 @@ public class Field implements IField
         {
             for (int j = 0; j < 9; j++)
             {
-                microBoard[i][j] = AVAILABLE_FIELD;
+                microBoard[i][j] = EMPTY_FIELD;
             }
         }
         
@@ -42,7 +42,7 @@ public class Field implements IField
         {
             for (int j = 0; j < 3; j++)
             {
-                macroBoard[i][j] = EMPTY_FIELD; 
+                macroBoard[i][j] = AVAILABLE_FIELD; 
             }
         }
        
@@ -58,7 +58,7 @@ public class Field implements IField
             {
                 if (isInActiveMicroboard(i, j) && microBoard[i][j].equals(EMPTY_FIELD))
                 {
-                    listMoves.add(new Move(i, j));
+                    translateCoordinates(i, j, listMoves);
                 }
             }
         }
@@ -136,5 +136,23 @@ public class Field implements IField
     {
        this.macroBoard = macroboard;
     }
-
+    
+    public void translateCoordinates(int row, int col, List<IMove> listMoves)
+    {
+        for (int x = 0; x < 2; x++)
+        {
+            for (int y = 0; y < 2; y++)
+            {
+                int microX = x + row * 3;
+                
+                int microY = y + col * 3;
+                
+                if (microBoard[microX][microY].equals(AVAILABLE_FIELD))
+                {
+                    IMove move = new Move(microX, microY);
+                    listMoves.add(move);
+                }         
+            }
+        }
+    }
 }

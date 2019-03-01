@@ -42,4 +42,9 @@ public class Move implements IMove
         this.y = y;
     }
     
+    @Override
+    public String toString() {
+        return "(" + x + "," + y + ")";
+    }
+    
 }
