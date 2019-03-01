@@ -98,7 +98,6 @@ public class GameManager
 
         //Update currentPlayer
         currentPlayer = (currentPlayer + 1) % 2;
-
         return true;
     }
 

@@ -23,6 +23,7 @@ public class Field implements IField
     {
         macroBoard = new String[3][3];
         microBoard = new String[9][9];
+        clearBoard();
     }
     
     
@@ -44,7 +45,7 @@ public class Field implements IField
                 macroBoard[i][j] = EMPTY_FIELD; 
             }
         }
-       microBoard = new String[9][9];
+       
     }
 
     @Override

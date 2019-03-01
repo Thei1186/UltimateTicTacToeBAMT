@@ -14,6 +14,8 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import ultimatetictactoebamt.bll.game.GameState;
+import ultimatetictactoebamt.bll.move.Move;
 
 /**
  *
@@ -30,7 +32,8 @@ public class UTTTController implements Initializable
     private GridPane microGridPane6, microGridPane7, microGridPane8, microGridPane9;
     
     private GameModel gModel;
-
+    @FXML
+    private Label lblMoves;
     public UTTTController()
     {
         gModel = new GameModel();
@@ -49,19 +52,18 @@ public class UTTTController implements Initializable
         String xOrO = player == 0 ? "X" : "O";
         
         btn.setText(xOrO);
-        
+        gModel.doMove(new Move(r,c));
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-        // TODO
     }
 
     @FXML
     private void clearGame(ActionEvent event)
     {
-        
+    
     }
 
 }

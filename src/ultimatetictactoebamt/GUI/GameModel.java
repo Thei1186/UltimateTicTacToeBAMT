@@ -8,6 +8,7 @@ package ultimatetictactoebamt.GUI;
 import ultimatetictactoebamt.bll.game.GameManager;
 import ultimatetictactoebamt.bll.game.GameState;
 import ultimatetictactoebamt.bll.game.IGameState;
+import ultimatetictactoebamt.bll.move.IMove;
 
 /**
  *
@@ -41,6 +42,10 @@ public class GameModel
     {
         return gManager.getCurrentState();
     }
-    
+
+    public boolean doMove(IMove move)
+    {
+        return gManager.updateGame(move);
+    }
     
 }
