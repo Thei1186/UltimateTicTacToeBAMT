@@ -106,8 +106,8 @@ public class Field implements IField
     @Override
     public Boolean isInActiveMicroboard(int x, int y)
     {
-        int microX = x > 0 ? x/3 : 0;
-        int microY = y > 0 ? y/3 : 0;
+        int microX = x/3;
+        int microY = y/3;
         
         String newValue = macroBoard[microX][microY];
         return newValue.equals(AVAILABLE_FIELD);

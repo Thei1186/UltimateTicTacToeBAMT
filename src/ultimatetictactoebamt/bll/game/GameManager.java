@@ -174,7 +174,7 @@ public class GameManager
             currentState.setRoundNumber(currentState.getRoundNumber() + 1);
             
             updateMacroboard(move);
-        }
+        } 
     }
 
     private void updateMacroboard(IMove move)
@@ -193,8 +193,8 @@ public class GameManager
             
         }
         
-        int microX = move.getX() % 3;
-        int microY = move.getY() % 3;
+        int microX = move.getX()/3;
+        int microY = move.getY()/3;
         
         if (macroBoard[microX][microY].equals(IField.EMPTY_FIELD))
         {
@@ -213,6 +213,38 @@ public class GameManager
                 }
             }
         }
+        
+//        int macroX = move.getX() / 3;
+//        int macroY = move.getY() / 3;
+//        
+//        String[][] macroBoard = currentState.getField().getMacroboard();
+//        
+//        if (currentState.getField().getMacroboard()[macroX][macroY] != IField.AVAILABLE_FIELD && currentState.getField().getMacroboard()[macroX][macroY] != IField.EMPTY_FIELD)
+//        {
+//            for (int x = 0; x < macroBoard.length; x++)
+//            {
+//                for (int y = 0; y < macroBoard[x].length; y++)
+//                {
+//                    if (currentState.getField().getMacroboard()[x][y] == IField.EMPTY_FIELD)
+//                    {
+//                        macroBoard[x][y] = IField.AVAILABLE_FIELD;
+//                    }
+//                }
+//            }
+//        }
+//        
+//        for (int x = 0; x < macroBoard.length; x++)
+//        {
+//            for (int y = 0; y < macroBoard[x].length; y++)
+//            {
+//                if (macroBoard[x][y] == IField.AVAILABLE_FIELD)
+//                {
+//                    macroBoard[x][y] = IField.EMPTY_FIELD;
+//                }
+//            }
+//        }
+//        currentState.getField().getMacroboard()[macroX][macroY] = IField.AVAILABLE_FIELD;
+
     }
     
    
