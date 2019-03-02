@@ -59,41 +59,9 @@ public class UTTTController implements Initializable
     private void clearGame(ActionEvent event)
     {
         gModel.getGameState().getField().clearBoard();
+        createMicroGridPanes();
     }
 
-    private void createAllCells()
-    {
-        int btnWidth = 75;
-        int btnHeight = 60;
-        for (int x = 0; x < 9; x++)
-        {
-            for (int y = 0; y < 9; y++)
-            {
-                UltimateButton btn = new UltimateButton();
-                btn.setPrefSize(btnWidth, btnHeight);
-                btn.setMove(new Move(x, y));
-                btn.setLayoutX(10 + (btnWidth + 2) * x);
-                btn.setLayoutY(128 + (btnHeight + 2) * y);
-                btn.setOnMouseClicked(event ->
-                {
-                    UltimateButton b = (UltimateButton) event.getSource();
-                    boolean succes = gModel.doMove(b.getMove());
-                    if (succes)
-                    {
-                        if (gModel.getGameState().getMoveNumber() % 2 == 0)
-                        {
-                            b.setText("X");
-                        } else
-                        {
-                            b.setText("O");
-                        }
-                    }
-                });
-                mainPane.getChildren().add(btn);
-            }
-        }
-
-    }
 
     private void createMicroGridPanes()
     {
@@ -131,7 +99,11 @@ public class UTTTController implements Initializable
         }
         insertButtonsIntoGridPanes();
     }
-
+    private boolean doMove(IMove move)
+    {
+        boolean validMove = gModel.doMove(move);
+        return validMove;
+    }
     private void insertButtonsIntoGridPanes()
     {
         int btnWidth = 75;
@@ -151,7 +123,7 @@ public class UTTTController implements Initializable
                         btn.setOnMouseClicked(event ->
                         {
                             UltimateButton b = (UltimateButton) event.getSource();
-                            boolean succes = gModel.doMove((IMove) btn.getUserData());
+                            boolean succes = doMove((IMove) btn.getUserData());
                             if (succes)
                             {
                                 if (gModel.getGameState().getMoveNumber() % 2 == 0)
