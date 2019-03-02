@@ -58,7 +58,7 @@ public class Field implements IField
             {
                 if (isInActiveMicroboard(i, j) && microBoard[i][j].equals(EMPTY_FIELD))
                 {
-                    translateCoordinates(i, j, listMoves);
+                      listMoves.add(new Move(i,j));
                 }
             }
         }
@@ -106,8 +106,8 @@ public class Field implements IField
     @Override
     public Boolean isInActiveMicroboard(int x, int y)
     {
-        int microX = x/3;
-        int microY = y/3;
+        int microX = x > 0 ? x/3 : 0;
+        int microY = y > 0 ? y/3 : 0;
         
         String newValue = macroBoard[microX][microY];
         return newValue.equals(AVAILABLE_FIELD);

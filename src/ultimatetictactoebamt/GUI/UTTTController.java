@@ -15,9 +15,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.RowConstraints;
 import ultimatetictactoebamt.UltimateButton;
 import ultimatetictactoebamt.bll.game.GameState;
+import ultimatetictactoebamt.bll.move.IMove;
 import ultimatetictactoebamt.bll.move.Move;
 
 /**
@@ -36,17 +40,19 @@ public class UTTTController implements Initializable
     @FXML
     private AnchorPane mainPane;
 
+    private GridPane[][] microGrid = new GridPane[3][3];
+    private UltimateButton[][] ultmBtn = new UltimateButton[9][9];
+
     public UTTTController()
     {
 
     }
 
-
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
         gModel = new GameModel();
-        createAllCells();
+        createMicroGridPanes();
 
     }
 
@@ -90,6 +96,83 @@ public class UTTTController implements Initializable
 
     }
 
+    private void createMicroGridPanes()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            macroGridPane.addRow(i);
+            for (int j = 0; j < 3; j++)
+            {
+                GridPane gp = new GridPane();
+                for (int k = 0; k < 3; k++)
+                {
+                    gp.addColumn(k);
+                    gp.addRow(k);
+                }
+                microGrid[i][j] = gp;
+                for (int m = 0; m < 3; m++)
+                {
+                    ColumnConstraints cc = new ColumnConstraints();
+                    cc.setPercentWidth(33);
+                    cc.setHgrow(Priority.ALWAYS);
+                    cc.setFillWidth(true);
+                    gp.getColumnConstraints().add(cc);
+
+                    RowConstraints rc = new RowConstraints();
+                    rc.setVgrow(Priority.ALWAYS);
+                    rc.setFillHeight(true);
+                    rc.setPercentHeight(33);
+                    gp.getRowConstraints().add(rc);
+                }
+                gp.setGridLinesVisible(true);
+                macroGridPane.addColumn(j);
+                macroGridPane.add(gp, i, j);
+            }
+
+        }
+        insertButtonsIntoGridPanes();
+    }
+
+    private void insertButtonsIntoGridPanes()
+    {
+        int btnWidth = 75;
+        int btnHeight = 60;
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                GridPane gp = microGrid[i][j];
+                for (int x = 0; x < 3; x++)
+                {
+                    for (int y = 0; y < 3; y++)
+                    {
+                        UltimateButton btn = new UltimateButton();
+                        btn.setPrefSize(btnWidth, btnHeight);             
+                        btn.setUserData(new Move(x+i*3, y+j*3));
+                        btn.setOnMouseClicked(event ->
+                        {
+                            UltimateButton b = (UltimateButton) event.getSource();
+                            boolean succes = gModel.doMove((IMove) btn.getUserData());
+                            if (succes)
+                            {
+                                if (gModel.getGameState().getMoveNumber() % 2 == 0)
+                                {
+                                    b.setText("X");
+                                } else
+                                {
+                                    b.setText("O");
+                                }
+                            }
+                        });
+                        btn.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+                        gp.add(btn,x,y);
+                        ultmBtn[x+i*3][y+j*3] = btn;
+                    }
+                }
+            }
+        }
+    }
+
     @FXML
     private void handleMacroBoard(MouseEvent event)
     {
@@ -99,8 +182,4 @@ public class UTTTController implements Initializable
         int c = (col == null) ? 0 : col;
     }
 
-    private void clickCell(MouseEvent event)
-    {
-
-    }
 }
