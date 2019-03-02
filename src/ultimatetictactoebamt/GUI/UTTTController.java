@@ -5,11 +5,13 @@
  */
 package ultimatetictactoebamt.GUI;
 
+
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
@@ -75,6 +77,7 @@ public class UTTTController implements Initializable
                 {
                     gp.addColumn(k);
                     gp.addRow(k);
+                    gp.setPadding(new Insets (10, 10, 10, 10));
                 }
                 microGrid[i][j] = gp;
                 for (int m = 0; m < 3; m++)
