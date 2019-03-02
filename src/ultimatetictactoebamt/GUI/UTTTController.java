@@ -11,7 +11,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -20,7 +19,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
 import ultimatetictactoebamt.UltimateButton;
-import ultimatetictactoebamt.bll.game.GameState;
 import ultimatetictactoebamt.bll.move.IMove;
 import ultimatetictactoebamt.bll.move.Move;
 
@@ -40,12 +38,13 @@ public class UTTTController implements Initializable
     @FXML
     private AnchorPane mainPane;
 
-    private GridPane[][] microGrid = new GridPane[3][3];
-    private UltimateButton[][] ultmBtn = new UltimateButton[9][9];
+    private GridPane[][] microGrid;
+    private UltimateButton[][] ultmBtn;
 
     public UTTTController()
     {
-
+         microGrid = new GridPane[3][3];
+         ultmBtn = new UltimateButton[9][9];
     }
 
     @Override
